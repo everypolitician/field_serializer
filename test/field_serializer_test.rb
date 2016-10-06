@@ -46,4 +46,26 @@ describe FieldSerializer  do
       ConstructorTestThing.new(subject: 'abc').to_h.must_equal foo: 3
     end
   end
+
+  describe 'internal methods' do
+    class InternalFieldTest
+      include FieldSerializer
+
+      field :constituency do
+        'Bungudu'
+      end
+
+      field :state do
+        'Zamfara'
+      end
+
+      field :area do
+        [constituency, state].join(', ')
+      end
+    end
+
+    it 'allows other fields to be accessed as methods' do
+      InternalFieldTest.new.area.must_equal 'Bungudu, Zamfara'
+    end
+  end
 end
