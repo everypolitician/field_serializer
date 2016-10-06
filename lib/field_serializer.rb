@@ -12,18 +12,19 @@ module FieldSerializer
   module ClassMethods
 
     def fields
-      @fields ||= {}
+      @fields ||= []
     end
 
     def field(name, &block)
-      fields[name] = block
+      fields << name
+      define_method(name, &block)
     end
 
   end
 
   def to_h
-    self.class.fields.map { |name, block|
-      v = instance_eval(&block) rescue nil
+    self.class.fields.map { |name|
+      v = __send__(name)
       [name, v]
     }.to_h
   end
