@@ -68,4 +68,24 @@ describe FieldSerializer  do
       InternalFieldTest.new.area.must_equal 'Bungudu, Zamfara'
     end
   end
+
+  describe 'inheritance' do
+    class InheritanceTest
+      include FieldSerializer
+
+      field :constituency do
+        'Bungudu'
+      end
+    end
+
+    class InheritanceSubclassTest < InheritanceTest
+      field :state do
+        'Zamfara'
+      end
+    end
+
+    it 'returns fields from the parent class in #to_h' do
+      InheritanceSubclassTest.new.to_h.must_equal(constituency: 'Bungudu', state: 'Zamfara')
+    end
+  end
 end
