@@ -69,7 +69,7 @@ describe FieldSerializer  do
     end
   end
 
-  describe 'inheritance' do
+  describe 'a subclass inheriting from a class that uses FieldSerializer' do
     class InheritanceTest
       include FieldSerializer
 
@@ -94,11 +94,11 @@ describe FieldSerializer  do
       end
     end
 
-    it 'returns fields from the parent class in #to_h' do
+    it 'should return fields defined by parent class in #to_h' do
       InheritanceSubclassTest.new.to_h.must_equal(constituency: 'Bungudu', state: 'Zamfara')
     end
 
-    it 'returns the field set in the subclass in #to_h' do
+    it 'should use its own field in favour of one with a matching name set in parent' do
       InheritanceSubclassTest2.new.to_h.must_equal(constituency: 'Chafe', state: 'Zamfara')
     end
   end
