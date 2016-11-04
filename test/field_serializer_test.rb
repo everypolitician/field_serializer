@@ -94,12 +94,26 @@ describe FieldSerializer  do
       end
     end
 
+    class InheritanceSubclassTest3 < InheritanceSubclassTest2
+      field :constituency do
+        'Wibble'
+      end
+
+      field :district do
+        'Bar'
+      end
+    end
+
     it 'should return fields defined by parent class in #to_h' do
       InheritanceSubclassTest.new.to_h.must_equal(constituency: 'Bungudu', state: 'Zamfara')
     end
 
     it 'should use its own field in favour of one with a matching name set in parent' do
       InheritanceSubclassTest2.new.to_h.must_equal(constituency: 'Chafe', state: 'Zamfara')
+    end
+
+    it 'should allow subclasses to be subclassed' do
+      InheritanceSubclassTest3.new.to_h.must_equal(constituency: 'Wibble', state: 'Zamfara', district: 'Bar')
     end
   end
 end
