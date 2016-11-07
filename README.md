@@ -2,7 +2,7 @@
 
 Ruby module which allows you to specify a set of fields that you'd like
 serialized in the `#to_h` method. We ([EveryPolitician](http://everypolitician.org/))
-are using this library in our scrapers to make them more declaritive. It allows
+are using this library in our scrapers to make them more declarative. It allows
 us to specify which fields we'd like to be scraped from a page without coupling
 ourselves to how the page is fetched or where the data ends up being stored.
 
