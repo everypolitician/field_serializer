@@ -33,20 +33,6 @@ describe FieldSerializer  do
     end
   end
 
-  describe 'class with constructor arguments' do
-    class ConstructorTestThing
-      include FieldSerializer
-
-      field :foo do
-        subject.length
-      end
-    end
-
-    it 'should return the length of the constructor argument' do
-      ConstructorTestThing.new(subject: 'abc').to_h.must_equal foo: 3
-    end
-  end
-
   describe 'internal methods' do
     class InternalFieldTest
       include FieldSerializer

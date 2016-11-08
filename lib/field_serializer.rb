@@ -5,10 +5,6 @@ module FieldSerializer
     klass.extend(ClassMethods)
   end
 
-  def initialize(options = {})
-    options.each { |o, v| define_singleton_method(o) { v } }
-  end
-
   module ClassMethods
     def inherited(subclass)
       subclass.fields.concat(fields)
