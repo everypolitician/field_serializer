@@ -6,6 +6,9 @@ module FieldSerializer
   end
 
   module ClassMethods
+    def inherited(subclass)
+      subclass.fields.concat(fields)
+    end
 
     def fields
       @fields ||= []
