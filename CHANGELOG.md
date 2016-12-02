@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 
-- Inheritence now works as expected. Previously subclasses weren't getting the
+- Inheritance now works as expected. Previously subclasses weren't getting the
   fields from the parent class. [#7](https://github.com/everypolitician/field_serializer/pull/7).
 
 ## [0.2.0](https://github.com/everypolitician/field_serializer/compare/v0.1.0...v0.2.0) - 2016-10-28
